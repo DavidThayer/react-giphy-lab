@@ -17,13 +17,15 @@ class SearchContainer extends Component {
     this.setState({
       query,
       searching: false
-    })
+    });
+    console.log("Query = ", this.state.query)
   }
 
   handleSubmit = (event) => {
-    console.log(this.state.query);
+    // console.log(this.state.query);
     event.preventDefault();
-    GiphyModel.search()
+    let query = this.state.query
+    GiphyModel.search(query)
       .then(response => {
         console.log(response.data)
         this.setState({
